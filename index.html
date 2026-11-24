@@ -359,7 +359,6 @@ window.coverFail = function(img){
         (meta.length ? '<div class="meta">' + meta.map(function(m){return "<span>" + m + "</span>"}).join("") + '</div>' : "") +
         progress(g) +
         (g.needs ? '<p class="needs"><b>Нужно:</b> ' + esc(g.needs) + '</p>' : "") +
-        (g.works ? '<p class="needs works"><b>Работает:</b> ' + esc(g.works) + '</p>' : "") +
         btn + more(g) +
       '</div></article>';
   }
