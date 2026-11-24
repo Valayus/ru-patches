@@ -6,6 +6,13 @@
 <title>Русики</title>
 <meta name="description" content="Каталог фанатских русификаторов игр для 3DS, Wii, GameCube, Switch, Switch 2 и PC.">
 <meta property="og:title" content="Русики">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://valayus.github.io/ru-patches/">
+<meta property="og:image" content="https://valayus.github.io/ru-patches/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://valayus.github.io/ru-patches/og.jpg">
 <meta property="og:description" content="Фанатские переводы игр на русский для 3DS, Wii, GameCube, Switch, Switch 2 и PC.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -141,6 +148,8 @@ h1 span{background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-
 .more{display:flex;gap:6px 14px;flex-wrap:wrap;font-size:13px}
 .more a{color:var(--accent);text-decoration:none;font-weight:600}
 .more a:hover{text-decoration:underline}
+.more a.bug{color:var(--muted)}
+.more a.bug::before{content:"⚑ ";}
 .empty{color:var(--muted);padding:40px 0;text-align:center;grid-column:1/-1}
 
 footer{border-top:1px solid var(--line);padding:24px 0 40px;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:flex-start}
@@ -315,6 +324,8 @@ window.coverFail = function(img){
     var items = (g.extra || []).map(function(x){
       var u = link(x); return u ? '<a href="' + esc(u) + '" target="_blank" rel="noopener">' + esc(x.label) + '</a>' : "";
     });
+    var main = link(g);
+    if (main) items.push('<a class="bug" href="' + esc(main + (main.indexOf("?") < 0 ? "?" : "&") + "comment=1") + '" target="_blank" rel="noopener">Нашёл ошибку?</a>');
     if (g.tag && ch) items.push('<a href="https://t.me/s/' + ch + '?q=%23' + encodeURIComponent(g.tag) + '" target="_blank" rel="noopener">Все версии #' + esc(g.tag) + '</a>');
     items = items.filter(Boolean);
     return items.length ? '<div class="more">' + items.join("") + '</div>' : "";
@@ -348,6 +359,7 @@ window.coverFail = function(img){
         (meta.length ? '<div class="meta">' + meta.map(function(m){return "<span>" + m + "</span>"}).join("") + '</div>' : "") +
         progress(g) +
         (g.needs ? '<p class="needs"><b>Нужно:</b> ' + esc(g.needs) + '</p>' : "") +
+        (g.works ? '<p class="needs works"><b>Работает:</b> ' + esc(g.works) + '</p>' : "") +
         btn + more(g) +
       '</div></article>';
   }
