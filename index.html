@@ -259,6 +259,15 @@ window.coverFail = function(img){
   if (S.author) document.getElementById("author").textContent = "Автор: " + S.author;
   if (ch){var c = document.getElementById("channel"); c.href = "https://t.me/" + ch; c.hidden = false;}
 
+  // не вышло в Telegram (нет номера поста) → «В процессе»; готовый перевод → «Текст готов»
+  G = G.map(function(g){
+    if (link(g)) return g;
+    var x = {}; for (var k in g) x[k] = g[k];
+    if (x.status !== "soon" && !x.text) x.text = "done";
+    x.status = "soon";
+    return x;
+  });
+
   G.sort(function(a,b){
     var sa = a.status === "soon" ? 1 : 0, sb = b.status === "soon" ? 1 : 0;
     if (sa !== sb) return sa - sb;
