@@ -48,7 +48,7 @@ a{color:inherit}
 
 /* --- шапка --- */
 header{padding:32px 0 20px}
-.brand{display:flex;gap:20px;align-items:flex-end;justify-content:space-between;flex-wrap:wrap}
+.brand{display:flex;gap:20px;align-items:center;justify-content:space-between;flex-wrap:wrap}
 h1{font-family:Unbounded,Manrope,sans-serif;font-size:clamp(26px,4vw,34px);line-height:1.1;margin:0;font-weight:800;letter-spacing:-.01em}
 h1 span{background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent}
 .sub{color:var(--muted);margin:6px 0 0;font-size:15px}
@@ -172,8 +172,8 @@ footer p{margin:0 0 6px}
   <div class="brand">
     <div>
       <h1 id="title">Русики</h1>
-      <p class="sub" id="subtitle"></p>
-      <div class="stats" id="stats"></div>
+
+
     </div>
     <a class="btn btn-primary tg-big" id="channel" target="_blank" rel="noopener" hidden>
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.9 4.3 18.6 20c-.2 1.1-.9 1.4-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.3-8.4c.4-.4-.1-.6-.6-.2L6 13.5l-4.9-1.5c-1.1-.3-1.1-1.1.2-1.6L20.5 3c.9-.3 1.7.2 1.4 1.3z"/></svg>
@@ -255,7 +255,7 @@ window.coverFail = function(img){
   function thumbSrc(g){ return g.cover || g.coverUrl || "" }
 
   document.title = S.title || document.title;
-  document.getElementById("subtitle").textContent = S.subtitle || "";
+
   if (S.author) document.getElementById("author").textContent = "Автор: " + S.author;
   if (ch){var c = document.getElementById("channel"); c.href = "https://t.me/" + ch; c.hidden = false;}
 
@@ -278,7 +278,7 @@ window.coverFail = function(img){
 
   var used = PLATS.filter(function(p){ return G.some(function(g){ return g.platform === p.name }) });
   var ready = G.filter(function(g){ return g.status !== "soon" }).length;
-  document.getElementById("stats").innerHTML =
+  if (document.getElementById("stats")) document.getElementById("stats").innerHTML =
     '<span class="stat"><b>' + ready + '</b> ' + plural(ready,"готовый перевод","готовых перевода","готовых переводов") + '</span>' +
     '<span class="stat"><b>' + used.length + '</b> ' + plural(used.length,"платформа","платформы","платформ") + '</span>' +
     '<span class="stat"><b>' + G.filter(function(g){return g.status === "soon"}).length + '</b> в работе</span>';

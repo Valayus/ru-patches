@@ -8,7 +8,7 @@
 // extra — дополнительные кнопки: [{ label: "Для Switch 1", tg: "99" }]
 window.SITE = {
   title: "Русики",
-  subtitle: "Переводы игр.",
+  subtitle: "",
   channel: "translateval",
   author: "@translateval",
 };
