@@ -14,6 +14,7 @@
 :root{
   --bg:#f5f4f1; --bg-glow:rgba(42,125,225,.10); --surface:#ffffff; --surface-2:#eeece7; --line:#e1ded6;
   --text:#18171a; --muted:#68645c; --accent:#2a7de1; --accent-2:#7b5cf0; --accent-ink:#fff;
+  --ok-c:#1f8a4c; --wip-c:#b7791f; --half-c:#7b5cf0;
   --p-3ds:#d6383b; --p-wii:#2b9fd8; --p-gc:#6e4bc4; --p-sw:#e4472c; --p-sw2:#0f9d8f; --p-pc:#4a6fa5;
   --shadow:0 1px 2px rgba(0,0,0,.05),0 8px 24px rgba(0,0,0,.07);
   --shadow-hover:0 2px 4px rgba(0,0,0,.06),0 16px 36px rgba(0,0,0,.12);
@@ -22,11 +23,13 @@
   --bg:#0f1013; --bg-glow:rgba(77,155,240,.16); --surface:#181a1e; --surface-2:#22252a; --line:#2a2d33;
   --text:#eeede9; --muted:#9a978f; --accent:#4d9bf0; --accent-2:#9a80ff; --accent-ink:#08121f;
   --shadow:0 1px 0 rgba(255,255,255,.03) inset; --shadow-hover:0 18px 40px rgba(0,0,0,.45);
+  --ok-c:#4cc17e; --wip-c:#e2a94a; --half-c:#9a80ff;
 }}
 :root[data-theme="dark"]{
   --bg:#0f1013; --bg-glow:rgba(77,155,240,.16); --surface:#181a1e; --surface-2:#22252a; --line:#2a2d33;
   --text:#eeede9; --muted:#9a978f; --accent:#4d9bf0; --accent-2:#9a80ff; --accent-ink:#08121f;
   --shadow:0 1px 0 rgba(255,255,255,.03) inset; --shadow-hover:0 18px 40px rgba(0,0,0,.45);
+  --ok-c:#4cc17e; --wip-c:#e2a94a; --half-c:#9a80ff;
 }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
@@ -121,7 +124,17 @@ h1 span{background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-
 .plat{font-weight:800;font-size:11px;color:var(--pc);letter-spacing:.08em;text-transform:uppercase}
 .card h3{font-size:17px;line-height:1.25;margin:0;font-weight:800}
 .meta{color:var(--muted);font-size:13px;display:flex;gap:4px 10px;flex-wrap:wrap}
-.what{margin:0;font-size:14px}
+.prog{list-style:none;margin:2px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.prog li{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;padding:5px 10px 5px 8px;border-radius:999px;background:var(--surface-2)}
+.prog li::before{content:"";width:14px;height:14px;border-radius:50%;flex:none;background-position:center;background-repeat:no-repeat;background-size:10px}
+.prog .ok{color:var(--ok-c)}
+.prog .ok::before{background-color:var(--ok-c);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 6.2 5 8.6l4.5-5' fill='none' stroke='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}
+.prog .wip{color:var(--wip-c)}
+.prog .wip::before{border:2px solid var(--wip-c);border-top-color:transparent;animation:spin 1.4s linear infinite}
+.prog .half{color:var(--half-c)}
+.prog .half::before{background:linear-gradient(90deg,var(--half-c) 50%,transparent 50%);border:2px solid var(--half-c)}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.prog .wip::before{animation:none}}
 .needs{margin:0;font-size:13px;color:var(--muted)}
 .needs b{color:var(--text);font-weight:700}
 .body .btn{margin-top:auto;width:100%}
@@ -148,7 +161,8 @@ footer p{margin:0 0 6px}
   .grid{grid-template-columns:1fr 1fr;gap:10px}
   .body{padding:10px 12px 12px}
   .card h3{font-size:15px}
-  .what,.needs{display:none}
+  .needs{display:none}
+  .prog li{font-size:12px;padding:4px 8px 4px 6px}
   .btn{padding:10px 8px;font-size:13px}
 }
 </style>
@@ -213,7 +227,7 @@ window.coverFail = function(img){
     {id:"pc",       name:"PC",       full:"Steam / Windows",   col:"--p-pc"}
   ];
   var byName = {}; PLATS.forEach(function(p){ byName[p.name] = p });
-  var ST = {ready:"Готово", beta:"Бета", soon:"Скоро"};
+  var ST = {ready:"Готово", beta:"Бета", soon:"В процессе"};
   var TG = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.9 4.3 18.6 20c-.2 1.1-.9 1.4-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.3-8.4c.4-.4-.1-.6-.6-.2L6 13.5l-4.9-1.5c-1.1-.3-1.1-1.1.2-1.6L20.5 3c.9-.3 1.7.2 1.4 1.3z"/></svg>';
   var ch = (S.channel || "").replace(/^@/, "").trim();
 
@@ -296,6 +310,20 @@ window.coverFail = function(img){
     items = items.filter(Boolean);
     return items.length ? '<div class="more">' + items.join("") + '</div>' : "";
   }
+  // короткий статус вместо описания
+  function progress(g){
+    var rows;
+    if (g.status === "soon") {
+      rows = g.text === "done"
+        ? [["ok","Текст готов"],["wip","В процессе"]]
+        : [["wip","В процессе"]];
+    } else if (g.status === "beta") {
+      rows = [["ok","Переведено"],["half","Бета-версия"]];
+    } else {
+      rows = [["ok","Переведено"],["ok","Проверено"]];
+    }
+    return '<ul class="prog">' + rows.map(function(r){ return '<li class="' + r[0] + '">' + r[1] + '</li>' }).join("") + '</ul>';
+  }
   function card(g){
     var url = link(g), meta = [];
     if (g.version) meta.push("v" + esc(String(g.version).replace(/^v/i,"")));
@@ -309,7 +337,7 @@ window.coverFail = function(img){
         '<span class="plat">' + esc(g.platform) + '</span>' +
         '<h3>' + esc(g.title) + '</h3>' +
         (meta.length ? '<div class="meta">' + meta.map(function(m){return "<span>" + m + "</span>"}).join("") + '</div>' : "") +
-        (g.what ? '<p class="what">' + esc(g.what) + '</p>' : "") +
+        progress(g) +
         (g.needs ? '<p class="needs"><b>Нужно:</b> ' + esc(g.needs) + '</p>' : "") +
         btn + more(g) +
       '</div></article>';
