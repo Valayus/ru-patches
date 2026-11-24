@@ -7,7 +7,7 @@
 // coverUrl — обложка по ссылке (если нет файла covers/<название>.jpg).
 // extra — дополнительные кнопки: [{ label: "Для Switch 1", tg: "99" }]
 window.SITE = {
-  title: "Русификаторы игр",
+  title: "Русики",
   subtitle: "Переводы игр.",
   channel: "translateval",
   author: "@translateval",
