@@ -5,118 +5,163 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Русификаторы игр</title>
 <meta name="description" content="Каталог фанатских русификаторов игр для 3DS, Wii, GameCube, Switch, Switch 2 и PC.">
+<meta property="og:title" content="Русификаторы игр">
+<meta property="og:description" content="Фанатские переводы игр на русский для 3DS, Wii, GameCube, Switch, Switch 2 и PC.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@600;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#f6f5f2; --surface:#ffffff; --surface-2:#efede8; --line:#e2dfd8;
-  --text:#1b1a18; --muted:#6b675f; --accent:#2a7de1; --accent-ink:#fff;
-  --ok:#1f8a4c; --beta:#b7791f; --soon:#7a7770;
+  --bg:#f5f4f1; --bg-glow:rgba(42,125,225,.10); --surface:#ffffff; --surface-2:#eeece7; --line:#e1ded6;
+  --text:#18171a; --muted:#68645c; --accent:#2a7de1; --accent-2:#7b5cf0; --accent-ink:#fff;
   --p-3ds:#d6383b; --p-wii:#2b9fd8; --p-gc:#6e4bc4; --p-sw:#e4472c; --p-sw2:#0f9d8f; --p-pc:#4a6fa5;
-  --shadow:0 1px 2px rgba(0,0,0,.04),0 6px 20px rgba(0,0,0,.06);
+  --shadow:0 1px 2px rgba(0,0,0,.05),0 8px 24px rgba(0,0,0,.07);
+  --shadow-hover:0 2px 4px rgba(0,0,0,.06),0 16px 36px rgba(0,0,0,.12);
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#121315; --surface:#1b1d20; --surface-2:#23262a; --line:#2d3035;
-  --text:#ecebe8; --muted:#9a978f; --accent:#4d9bf0; --accent-ink:#0b1420;
-  --ok:#4cc17e; --beta:#e2a94a; --soon:#8d8a84; --shadow:none;
+  --bg:#0f1013; --bg-glow:rgba(77,155,240,.16); --surface:#181a1e; --surface-2:#22252a; --line:#2a2d33;
+  --text:#eeede9; --muted:#9a978f; --accent:#4d9bf0; --accent-2:#9a80ff; --accent-ink:#08121f;
+  --shadow:0 1px 0 rgba(255,255,255,.03) inset; --shadow-hover:0 18px 40px rgba(0,0,0,.45);
 }}
 :root[data-theme="dark"]{
-  --bg:#121315; --surface:#1b1d20; --surface-2:#23262a; --line:#2d3035;
-  --text:#ecebe8; --muted:#9a978f; --accent:#4d9bf0; --accent-ink:#0b1420;
-  --ok:#4cc17e; --beta:#e2a94a; --soon:#8d8a84; --shadow:none;
+  --bg:#0f1013; --bg-glow:rgba(77,155,240,.16); --surface:#181a1e; --surface-2:#22252a; --line:#2a2d33;
+  --text:#eeede9; --muted:#9a978f; --accent:#4d9bf0; --accent-2:#9a80ff; --accent-ink:#08121f;
+  --shadow:0 1px 0 rgba(255,255,255,.03) inset; --shadow-hover:0 18px 40px rgba(0,0,0,.45);
 }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 Manrope,system-ui,-apple-system,"Segoe UI",sans-serif}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 Manrope,system-ui,-apple-system,"Segoe UI",sans-serif;
+  background-image:radial-gradient(900px 420px at 15% -120px,var(--bg-glow),transparent 70%),radial-gradient(700px 380px at 95% -160px,color-mix(in srgb,var(--accent-2) 14%,transparent),transparent 70%);
+  background-repeat:no-repeat}
 a{color:inherit}
-.wrap{max-width:1120px;margin:0 auto;padding:0 16px}
-header{padding:44px 0 20px}
-.top{display:flex;gap:16px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap}
-h1{font-size:clamp(28px,5vw,40px);line-height:1.1;margin:0 0 10px;font-weight:800;letter-spacing:-.02em}
-.sub{color:var(--muted);max-width:620px;margin:0}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:10px;padding:11px 16px;font-weight:600;font-size:14px;line-height:1;font-family:inherit;text-decoration:none;cursor:pointer;white-space:nowrap}
+.wrap{max-width:1160px;margin:0 auto;padding:0 16px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:11px;padding:11px 16px;font-weight:700;font-size:14px;line-height:1;font-family:inherit;text-decoration:none;cursor:pointer;white-space:nowrap;transition:filter .15s,transform .15s}
 .btn-primary{background:var(--accent);color:var(--accent-ink)}
 .btn-primary:hover{filter:brightness(1.08)}
-.btn-ghost{background:var(--surface-2);color:var(--text)}
+.btn-primary:active{transform:translateY(1px)}
 .btn[aria-disabled="true"]{background:var(--surface-2);color:var(--muted);cursor:default;filter:none}
 .btn svg{width:16px;height:16px;flex:none}
 
-/* --- экран платформ --- */
-.lead{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:8px 0 14px}
-.plats{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;padding-bottom:40px}
-.plat-tile{position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;min-height:150px;padding:20px;border-radius:16px;text-decoration:none;color:#fff;background:var(--pc);box-shadow:var(--shadow);transition:transform .15s ease}
-.plat-tile:hover{transform:translateY(-2px)}
+/* --- шапка --- */
+header{padding:56px 0 28px}
+.brand{display:flex;gap:20px;align-items:flex-end;justify-content:space-between;flex-wrap:wrap}
+h1{font-family:Unbounded,Manrope,sans-serif;font-size:clamp(30px,6vw,52px);line-height:1.02;margin:0;font-weight:800;letter-spacing:-.02em}
+h1 span{background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--muted);margin:12px 0 0;font-size:17px}
+.stats{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:13px;color:var(--muted)}
+.stat b{color:var(--text);font-weight:800}
+.tg-big{padding:14px 20px;font-size:15px;border-radius:13px;box-shadow:0 8px 24px color-mix(in srgb,var(--accent) 35%,transparent)}
+
+.h2{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:8px 0 14px}
+.h2 h2{font-family:Unbounded,Manrope,sans-serif;font-size:18px;font-weight:600;margin:0;letter-spacing:-.01em}
+.h2 a{font-size:13px;color:var(--accent);text-decoration:none;font-weight:600}
+
+/* --- новые переводы --- */
+.fresh{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(150px,1fr);gap:12px;overflow-x:auto;padding:2px 2px 14px;margin:0 -2px 26px;scroll-snap-type:x mandatory;scrollbar-width:thin}
+.mini{scroll-snap-align:start;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:8px;min-width:0}
+.mini .cover{border-radius:12px;box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s}
+.mini:hover .cover{transform:translateY(-3px);box-shadow:var(--shadow-hover)}
+.mini .t{font-size:13px;font-weight:700;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.mini .m{font-size:12px;color:var(--muted);margin-top:-4px}
+.mini .m i{font-style:normal;font-weight:700;color:var(--pc)}
+
+/* --- плитки платформ --- */
+.plats{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;padding-bottom:40px}
+.plat-tile{position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;min-height:168px;padding:20px;border-radius:18px;text-decoration:none;color:#fff;
+  background:linear-gradient(145deg,color-mix(in srgb,var(--pc) 100%,#fff 8%),color-mix(in srgb,var(--pc) 70%,#000));box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s}
+.plat-tile:hover{transform:translateY(-3px);box-shadow:var(--shadow-hover)}
 .plat-tile:focus-visible{outline:3px solid var(--text);outline-offset:3px}
-.plat-tile::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 90% at 100% 0%,rgba(255,255,255,.22),transparent 55%),linear-gradient(160deg,transparent 40%,rgba(0,0,0,.25));pointer-events:none}
-.plat-tile .pname{position:relative;z-index:1;font-size:26px;font-weight:800;letter-spacing:-.02em;line-height:1.1}
-.plat-tile .pfull{position:relative;z-index:1;font-size:13px;opacity:.85;margin-top:4px}
-.plat-tile .pcount{position:relative;z-index:1;font-size:14px;font-weight:600;display:flex;align-items:center;gap:6px}
-.plat-tile .pcount b{font-size:22px;font-weight:800}
+.plat-tile::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 90% at 0% 0%,rgba(255,255,255,.22),transparent 55%);pointer-events:none}
+.plat-tile .txt{position:relative;z-index:2;text-shadow:0 1px 8px rgba(0,0,0,.25)}
+.plat-tile.all .txt{text-shadow:none}
+.plat-tile .pname{font-family:Unbounded,Manrope,sans-serif;font-size:22px;font-weight:800;letter-spacing:-.02em;line-height:1.1;white-space:nowrap}
+.plat-tile .pfull{font-size:13px;opacity:.85;margin-top:4px}
+.plat-tile .pcount{position:relative;z-index:2;font-size:14px;font-weight:600;display:flex;align-items:baseline;gap:6px}
+.plat-tile .pcount b{font-size:24px;font-weight:800}
+.fan{position:absolute;right:-6px;bottom:-16px;width:140px;height:120px;z-index:1}
+.fan .fc{position:absolute;bottom:0;width:72px;aspect-ratio:3/4;border-radius:8px;overflow:hidden;background:rgba(0,0,0,.25);box-shadow:0 8px 20px rgba(0,0,0,.35);transition:transform .25s}
+.fan .fc img{width:100%;height:100%;object-fit:cover;display:block}
+.fan .fc:nth-child(1){right:52px;transform:rotate(-14deg) translateY(10px)}
+.fan .fc:nth-child(2){right:27px;transform:rotate(-4deg) translateY(2px);z-index:2}
+.fan .fc:nth-child(3){right:2px;transform:rotate(8deg) translateY(8px);z-index:3}
+.plat-tile:hover .fan .fc:nth-child(1){transform:rotate(-18deg) translate(-6px,4px)}
+.plat-tile:hover .fan .fc:nth-child(3){transform:rotate(12deg) translate(6px,4px)}
 .plat-tile.all{background:var(--surface);color:var(--text);border:1px solid var(--line)}
-.plat-tile.all::after{display:none}
+.plat-tile.all::before{background:radial-gradient(120% 90% at 0% 0%,var(--bg-glow),transparent 60%)}
 
 /* --- экран игр --- */
 .bar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:20px}
-.back{background:var(--surface-2);color:var(--text);border:0;border-radius:10px;padding:10px 14px;font:inherit;font-weight:600;font-size:14px;cursor:pointer;text-decoration:none}
-.ptitle{font-size:24px;font-weight:800;letter-spacing:-.01em;margin:0;display:flex;align-items:center;gap:10px}
+.back{background:var(--surface);border:1px solid var(--line);color:var(--text);border-radius:11px;padding:10px 14px;font:inherit;font-weight:700;font-size:14px;cursor:pointer;text-decoration:none}
+.back:hover{background:var(--surface-2)}
+.ptitle{font-family:Unbounded,Manrope,sans-serif;font-size:22px;font-weight:600;margin:0;display:flex;align-items:center;gap:10px}
 .ptitle i{width:12px;height:12px;border-radius:4px;background:var(--pc);display:inline-block}
-.search{flex:1 1 220px;min-width:0;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font:inherit;color:var(--text)}
+.search{flex:1 1 220px;min-width:0;background:var(--surface);border:1px solid var(--line);border-radius:11px;padding:10px 12px;font:inherit;color:var(--text)}
 .search:focus{outline:2px solid var(--accent);outline-offset:-1px}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;padding-bottom:48px}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--shadow)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-3px);box-shadow:var(--shadow-hover)}
 .cover{position:relative;aspect-ratio:3/4;background:var(--pc);overflow:hidden}
 .cover img{position:absolute;inset:0;width:100%;height:100%;display:block}
 .cover img.bg{object-fit:cover;filter:blur(18px) brightness(.7);transform:scale(1.2)}
-.cover img.fg{object-fit:contain}
+.cover img.fg{object-fit:contain;transition:transform .35s}
+.card:hover .cover img.fg{transform:scale(1.03)}
 .cover.crop-r img.fg{object-fit:cover;object-position:100% 50%}
 .cover.has{background:#111}
 .cover.has .ph{display:none}
-.cover .ph{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:18px;color:#fff;
+.cover .ph{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:16px;color:#fff;
   background:radial-gradient(120% 70% at 100% 0%,rgba(255,255,255,.25),transparent 60%),linear-gradient(170deg,transparent 30%,rgba(0,0,0,.45)),var(--pc)}
-.cover .ph span{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.85}
-.cover .ph strong{font-size:22px;line-height:1.15;font-weight:800;letter-spacing:-.01em;margin-top:6px;overflow-wrap:anywhere}
+.cover .ph span{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.85}
+.cover .ph strong{font-size:18px;line-height:1.15;font-weight:800;margin-top:6px;overflow-wrap:anywhere}
 .cover .status{position:absolute;top:10px;right:10px;z-index:2}
-.status{font-weight:700;font-size:12px;line-height:1;padding:6px 9px;border-radius:7px;background:rgba(0,0,0,.6);color:#fff;backdrop-filter:blur(4px)}
+.status{font-weight:700;font-size:12px;line-height:1;padding:6px 9px;border-radius:999px;background:rgba(10,10,12,.66);color:#fff;backdrop-filter:blur(6px)}
 .status.ready{color:#7be3a6} .status.beta{color:#ffcf7a} .status.soon{color:#d6d3cc}
 .body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:8px;flex:1}
-.plat{font-weight:700;font-size:11px;color:var(--pc);letter-spacing:.06em;text-transform:uppercase}
-.card h2{font-size:17px;line-height:1.25;margin:0;font-weight:700}
+.plat{font-weight:800;font-size:11px;color:var(--pc);letter-spacing:.08em;text-transform:uppercase}
+.card h3{font-size:17px;line-height:1.25;margin:0;font-weight:800}
 .meta{color:var(--muted);font-size:13px;display:flex;gap:4px 10px;flex-wrap:wrap}
 .what{margin:0;font-size:14px}
 .needs{margin:0;font-size:13px;color:var(--muted)}
-.needs b{color:var(--text);font-weight:600}
+.needs b{color:var(--text);font-weight:700}
 .body .btn{margin-top:auto;width:100%}
 .more{display:flex;gap:6px 14px;flex-wrap:wrap;font-size:13px}
-.more a{color:var(--accent);text-decoration:none}
+.more a{color:var(--accent);text-decoration:none;font-weight:600}
 .more a:hover{text-decoration:underline}
 .empty{color:var(--muted);padding:40px 0;text-align:center;grid-column:1/-1}
 
-footer{border-top:1px solid var(--line);padding:24px 0 40px;color:var(--muted);font-size:13px}
+footer{border-top:1px solid var(--line);padding:24px 0 40px;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:flex-start}
 footer p{margin:0 0 6px}
-.theme{background:none;border:1px solid var(--line);color:var(--muted);border-radius:8px;padding:6px 10px;font:inherit;font-size:13px;cursor:pointer}
+.theme{background:var(--surface);border:1px solid var(--line);color:var(--muted);border-radius:9px;padding:7px 11px;font:inherit;font-size:13px;cursor:pointer}
 @media (max-width:520px){
+  header{padding:36px 0 20px}
+  .tg-big{width:100%}
+  .fresh{grid-auto-columns:42%}
   .plats{grid-template-columns:1fr 1fr;gap:10px}
-  .plat-tile{min-height:120px;padding:14px}
-  .plat-tile .pname{font-size:20px}
+  .plat-tile{min-height:150px;padding:14px;border-radius:16px}
+  .plat-tile .txt{max-width:100%}
+  .plat-tile .pname{font-size:16px}
+  .plat-tile .pcount b{font-size:20px}
+  .fan{width:110px;height:110px;right:-10px;bottom:-18px}
+  .fan .fc{width:60px}
+  .fan .fc:nth-child(1){right:42px} .fan .fc:nth-child(2){right:22px}
   .grid{grid-template-columns:1fr 1fr;gap:10px}
   .body{padding:10px 12px 12px}
-  .card h2{font-size:15px}
+  .card h3{font-size:15px}
   .what,.needs{display:none}
   .btn{padding:10px 8px;font-size:13px}
-  .cover .ph{padding:12px} .cover .ph strong{font-size:17px}
 }
 </style>
 </head>
 <body>
 <header class="wrap">
-  <div class="top">
+  <div class="brand">
     <div>
-      <h1 id="title">Русификаторы игр</h1>
+      <h1 id="title">Русификаторы <span>игр</span></h1>
       <p class="sub" id="subtitle"></p>
+      <div class="stats" id="stats"></div>
     </div>
-    <a class="btn btn-ghost" id="channel" target="_blank" rel="noopener" hidden>
+    <a class="btn btn-primary tg-big" id="channel" target="_blank" rel="noopener" hidden>
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.9 4.3 18.6 20c-.2 1.1-.9 1.4-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.3-8.4c.4-.4-.1-.6-.6-.2L6 13.5l-4.9-1.5c-1.1-.3-1.1-1.1.2-1.6L20.5 3c.9-.3 1.7.2 1.4 1.3z"/></svg>
       Канал в Telegram
     </a>
@@ -125,7 +170,9 @@ footer p{margin:0 0 6px}
 
 <main class="wrap">
   <section id="home">
-    <p class="lead">Выбери платформу</p>
+    <div class="h2"><h2>Новые переводы</h2><a href="#all">Все игры →</a></div>
+    <div class="fresh" id="fresh"></div>
+    <div class="h2"><h2>Выбери платформу</h2></div>
     <div class="plats" id="plats"></div>
   </section>
 
@@ -140,9 +187,11 @@ footer p{margin:0 0 6px}
 </main>
 
 <footer class="wrap">
-  <p>Здесь только патчи. Образы игр не раздаются: нужна своя копия игры нужной версии (указана в карточке).</p>
-  <p>Все права на игры принадлежат их владельцам. Переводы любительские и бесплатные.</p>
-  <p id="author"></p>
+  <div>
+    <p>Здесь только патчи. Образы игр не раздаются: нужна своя копия игры нужной версии (указана в карточке).</p>
+    <p>Все права на игры принадлежат их владельцам. Переводы любительские и бесплатные.</p>
+    <p id="author"></p>
+  </div>
   <button class="theme" id="theme" type="button">Сменить тему</button>
 </footer>
 
@@ -177,10 +226,21 @@ window.coverFail = function(img){
     if (/^https?:\/\//.test(p)) return p;
     return ch ? "https://t.me/" + ch + "/" + p : "";
   }
-  function plural(n){var a=n%10,b=n%100; return (a==1&&b!=11)?"перевод":(a>=2&&a<=4&&(b<10||b>=20))?"перевода":"переводов"}
+  function plural(n, a, b, c){var x=n%10,y=n%100; return (x==1&&y!=11)?a:(x>=2&&x<=4&&(y<10||y>=20))?b:c}
+  function pl(g){ return byName[g.platform] || PLATS[PLATS.length-1] }
+  function coverHTML(g, withStatus){
+    // своя картинка (cover: "covers/...") важнее ссылки; без них — заглушка
+    var src = g.cover || g.coverUrl || "", alt = g.cover ? (g.coverUrl || "") : "";
+    return '<div class="cover' + (g.coverCrop === "right" ? ' crop-r' : '') + '" style="--pc:var(' + pl(g).col + ')">' +
+      '<div class="ph"><span>' + esc(pl(g).full) + '</span><strong>' + esc(g.title) + '</strong></div>' +
+      '<img class="bg" src="' + esc(src) + '" data-alt="' + esc(alt) + '" alt="" aria-hidden="true" loading="lazy" referrerpolicy="no-referrer" onerror="coverFail(this)">' +
+      '<img class="fg" src="' + esc(src) + '" data-alt="' + esc(alt) + '" alt="Обложка: ' + esc(g.title) + '" loading="lazy" referrerpolicy="no-referrer" onload="this.parentNode.classList.add(\'has\')" onerror="coverFail(this)">' +
+      (withStatus ? '<span class="status ' + esc(g.status) + '">' + (ST[g.status] || "") + '</span>' : '') +
+    '</div>';
+  }
+  function thumbSrc(g){ return g.cover || g.coverUrl || "" }
 
   document.title = S.title || document.title;
-  document.getElementById("title").textContent = S.title || "Русификаторы игр";
   document.getElementById("subtitle").textContent = S.subtitle || "";
   if (S.author) document.getElementById("author").textContent = "Автор: " + S.author;
   if (ch){var c = document.getElementById("channel"); c.href = "https://t.me/" + ch; c.hidden = false;}
@@ -188,21 +248,43 @@ window.coverFail = function(img){
   G.sort(function(a,b){
     var sa = a.status === "soon" ? 1 : 0, sb = b.status === "soon" ? 1 : 0;
     if (sa !== sb) return sa - sb;
-    var la = link(a) ? 0 : 1, lb = link(b) ? 0 : 1;      // уже выложенные выше
+    var la = link(a) ? 0 : 1, lb = link(b) ? 0 : 1;
     if (la !== lb) return la - lb;
     return (b.date || "").localeCompare(a.date || "");
   });
 
-  // --- плитки платформ ---
   var used = PLATS.filter(function(p){ return G.some(function(g){ return g.platform === p.name }) });
+  var ready = G.filter(function(g){ return g.status !== "soon" }).length;
+  document.getElementById("stats").innerHTML =
+    '<span class="stat"><b>' + ready + '</b> ' + plural(ready,"готовый перевод","готовых перевода","готовых переводов") + '</span>' +
+    '<span class="stat"><b>' + used.length + '</b> ' + plural(used.length,"платформа","платформы","платформ") + '</span>' +
+    '<span class="stat"><b>' + G.filter(function(g){return g.status === "soon"}).length + '</b> в работе</span>';
+
+  // --- новые переводы: последние выложенные ---
+  var fresh = G.filter(function(g){ return link(g) && g.date }).sort(function(a,b){ return b.date.localeCompare(a.date) }).slice(0, 6);
+  document.getElementById("fresh").innerHTML = fresh.map(function(g){
+    return '<a class="mini" href="' + esc(link(g)) + '" target="_blank" rel="noopener" style="--pc:var(' + pl(g).col + ')">' +
+      coverHTML(g, false) +
+      '<span class="t">' + esc(g.title) + '</span>' +
+      '<span class="m"><i>' + esc(g.platform) + '</i> · ' + fmtDate(g.date) + '</span></a>';
+  }).join("");
+
+  // --- плитки платформ с веером обложек ---
+  function fan(list){
+    return '<div class="fan" aria-hidden="true">' + list.slice(0,3).map(function(g){
+      return '<div class="fc' + (g.coverCrop === "right" ? ' r' : '') + '"><img src="' + esc(thumbSrc(g)) + '" alt="" loading="lazy" referrerpolicy="no-referrer"' +
+        (g.coverCrop === "right" ? ' style="object-position:100% 50%"' : '') + ' onerror="this.parentNode.remove()"></div>';
+    }).join("") + '</div>';
+  }
   var tiles = used.map(function(p){
-    var n = G.filter(function(g){ return g.platform === p.name }).length;
+    var list = G.filter(function(g){ return g.platform === p.name });
+    var n = list.length;
     return '<a class="plat-tile" href="#' + p.id + '" style="--pc:var(' + p.col + ')">' +
-      '<div><div class="pname">' + esc(p.name) + '</div><div class="pfull">' + esc(p.full) + '</div></div>' +
-      '<div class="pcount"><b>' + n + '</b>' + plural(n) + '</div></a>';
+      '<div class="txt"><div class="pname">' + esc(p.name) + '</div><div class="pfull">' + esc(p.full) + '</div></div>' +
+      '<div class="pcount"><b>' + n + '</b>' + plural(n,"перевод","перевода","переводов") + '</div>' + fan(list) + '</a>';
   });
-  tiles.push('<a class="plat-tile all" href="#all"><div><div class="pname">Все игры</div><div class="pfull">Все платформы сразу</div></div>' +
-    '<div class="pcount"><b>' + G.length + '</b>' + plural(G.length) + '</div></a>');
+  tiles.push('<a class="plat-tile all" href="#all"><div class="txt"><div class="pname">Все игры</div><div class="pfull">Все платформы сразу</div></div>' +
+    '<div class="pcount"><b>' + G.length + '</b>' + plural(G.length,"игра","игры","игр") + '</div>' + fan(fresh.slice(0,3)) + '</a>');
   document.getElementById("plats").innerHTML = tiles.join("");
 
   // --- карточки ---
@@ -215,24 +297,17 @@ window.coverFail = function(img){
     return items.length ? '<div class="more">' + items.join("") + '</div>' : "";
   }
   function card(g){
-    var p = byName[g.platform] || PLATS[PLATS.length-1];
     var url = link(g), meta = [];
     if (g.version) meta.push("v" + esc(String(g.version).replace(/^v/i,"")));
     if (g.date) meta.push(fmtDate(g.date));
     if (g.size) meta.push(esc(g.size));
-    var src = g.cover || ("covers/" + slug(g.title) + ".jpg");
-    var alt = g.coverUrl || "";
     var btn = url
       ? '<a class="btn btn-primary" href="' + esc(url) + '" target="_blank" rel="noopener">' + TG + 'Скачать</a>'
       : '<span class="btn" aria-disabled="true">Скоро в канале</span>';
-    return '<article class="card" style="--pc:var(' + p.col + ')">' +
-      '<div class="cover' + (g.coverCrop === "right" ? ' crop-r' : '') + '"><div class="ph"><span>' + esc(p.full) + '</span><strong>' + esc(g.title) + '</strong></div>' +
-        '<img class="bg" src="' + esc(src) + '" data-alt="' + esc(alt) + '" alt="" aria-hidden="true" loading="lazy" referrerpolicy="no-referrer" onerror="coverFail(this)">' +
-        '<img class="fg" src="' + esc(src) + '" data-alt="' + esc(alt) + '" alt="Обложка: ' + esc(g.title) + '" loading="lazy" referrerpolicy="no-referrer" onload="this.parentNode.classList.add(\'has\')" onerror="coverFail(this)">' +
-        '<span class="status ' + esc(g.status) + '">' + (ST[g.status] || "") + '</span></div>' +
+    return '<article class="card" style="--pc:var(' + pl(g).col + ')">' + coverHTML(g, true) +
       '<div class="body">' +
         '<span class="plat">' + esc(g.platform) + '</span>' +
-        '<h2>' + esc(g.title) + '</h2>' +
+        '<h3>' + esc(g.title) + '</h3>' +
         (meta.length ? '<div class="meta">' + meta.map(function(m){return "<span>" + m + "</span>"}).join("") + '</div>' : "") +
         (g.what ? '<p class="what">' + esc(g.what) + '</p>' : "") +
         (g.needs ? '<p class="needs"><b>Нужно:</b> ' + esc(g.needs) + '</p>' : "") +
@@ -243,10 +318,9 @@ window.coverFail = function(img){
   var cur = null, q = "";
   var qEl = document.getElementById("q");
   qEl.addEventListener("input", function(){ q = qEl.value.trim().toLowerCase(); renderList(); });
-
   function renderList(){
     var list = G.filter(function(g){
-      return (cur === "all" || (byName[g.platform] || {}).id === cur) && (!q || g.title.toLowerCase().indexOf(q) >= 0);
+      return (cur === "all" || pl(g).id === cur) && (!q || g.title.toLowerCase().indexOf(q) >= 0);
     });
     document.getElementById("grid").innerHTML = list.length ? list.map(card).join("") : '<p class="empty">Ничего не найдено</p>';
   }
@@ -256,7 +330,7 @@ window.coverFail = function(img){
     if (h !== "all" && !p){ cur = null; document.getElementById("home").hidden = false; document.getElementById("list").hidden = true; return; }
     cur = h; q = ""; qEl.value = "";
     var t = document.getElementById("ptitle");
-    t.style.setProperty("--pc", p ? "var(" + p.col + ")" : "var(--muted)");
+    t.style.setProperty("--pc", p ? "var(" + p.col + ")" : "var(--accent)");
     t.innerHTML = "<i></i>" + esc(p ? p.full : "Все игры");
     document.getElementById("home").hidden = true;
     document.getElementById("list").hidden = false;
