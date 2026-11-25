@@ -3,8 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Русики</title>
-<meta name="description" content="Каталог фанатских русификаторов игр для 3DS, Wii, GameCube, Switch, Switch 2 и PC.">
+<title>Русики — русификаторы игр</title>
+<meta name="description" content="Русики — каталог бесплатных фанатских русификаторов игр для Nintendo 3DS, Wii, GameCube, Switch, Switch 2 и PC. Скачать русификатор, статус перевода, нужная версия игры.">
+<link rel="canonical" href="https://valayus.github.io/ru-patches/">
 <meta property="og:title" content="Русики">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://valayus.github.io/ru-patches/">
@@ -152,6 +153,13 @@ h1 span{background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-
 .more a.bug::before{content:"⚑ ";}
 .empty{color:var(--muted);padding:40px 0;text-align:center;grid-column:1/-1}
 
+.seo-index{border-top:1px solid var(--line);margin-top:8px;padding:20px 0 4px;font-size:13px;color:var(--muted);line-height:1.7}
+.seo-index h2{font-size:14px;margin:0 0 6px;color:var(--text)}
+.seo-index p{margin:0 0 6px}
+.seo-index a{color:var(--muted);text-decoration:none}
+.seo-index a:hover{color:var(--accent);text-decoration:underline}
+.card h3 a{text-decoration:none}
+.card h3 a:hover{color:var(--accent)}
 footer{border-top:1px solid var(--line);padding:24px 0 40px;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:flex-start}
 footer p{margin:0 0 6px}
 .theme{background:var(--surface);border:1px solid var(--line);color:var(--muted);border-radius:9px;padding:7px 11px;font:inherit;font-size:13px;cursor:pointer}
@@ -207,6 +215,17 @@ footer p{margin:0 0 6px}
     </div>
     <div class="grid" id="grid"></div>
   </section>
+  <!-- GAMES-INDEX -->
+<nav class="seo-index" aria-label="Все русификаторы">
+<h2>Все русификаторы</h2>
+<p><b>Nintendo 3DS:</b> <a href="fantasy-life-3ds/">Fantasy Life</a>, <a href="lord-of-magna-maiden-heaven-3ds/">Lord of Magna: Maiden Heaven</a>, <a href="shin-megami-tensei-devil-survivor-overclocked-3ds/">Shin Megami Tensei: Devil Survivor Overclocked</a>, <a href="stella-glow-3ds/">Stella Glow</a>, <a href="radiant-historia-perfect-chronology-3ds/">Radiant Historia: Perfect Chronology</a>, <a href="rodea-the-sky-soldier-3ds/">Rodea the Sky Soldier</a>, <a href="shin-megami-tensei-devil-survivor-2-record-breaker-3ds/">Shin Megami Tensei: Devil Survivor 2 Record Breaker</a></p>
+<p><b>Nintendo Wii:</b> <a href="trauma-team-wii/">Trauma Team</a>, <a href="arc-rise-fantasia-wii/">Arc Rise Fantasia</a>, <a href="fire-emblem-radiant-dawn-wii/">Fire Emblem: Radiant Dawn</a>, <a href="pandora-s-tower-wii/">Pandora&#x27;s Tower</a></p>
+<p><b>Nintendo GameCube:</b> <a href="fire-emblem-path-of-radiance-gamecube/">Fire Emblem: Path of Radiance</a></p>
+<p><b>Nintendo Switch:</b> <a href="blue-reflection-quartet-switch/">BLUE REFLECTION Quartet</a>, <a href="atelier-ryza-3-alchemist-of-the-end-the-secret-key-dx-switch/">Atelier Ryza 3: Alchemist of the End &amp; the Secret Key DX</a>, <a href="atelier-ryza-2-lost-legends-the-secret-fairy-dx-switch/">Atelier Ryza 2: Lost Legends &amp; the Secret Fairy DX</a>, <a href="atelier-ryza-ever-darkness-the-secret-hideout-dx-switch/">Atelier Ryza: Ever Darkness &amp; the Secret Hideout DX</a>, <a href="xenoblade-chronicles-x-definitive-edition-switch/">Xenoblade Chronicles X: Definitive Edition</a></p>
+<p><b>Nintendo Switch 2:</b> <a href="xenoblade-chronicles-x-definitive-edition-switch-2/">Xenoblade Chronicles X: Definitive Edition</a>, <a href="xenoblade-chronicles-definitive-edition-switch-2/">Xenoblade Chronicles: Definitive Edition</a>, <a href="xenoblade-chronicles-2-switch-2/">Xenoblade Chronicles 2</a>, <a href="pokemon-pokopia-switch-2/">Pokémon Pokopia</a>, <a href="fire-emblem-fortune-s-weave-switch-2/">Fire Emblem: Fortune&#x27;s Weave</a>, <a href="hyrule-warriors-age-of-imprisonment-switch-2/">Hyrule Warriors: Age of Imprisonment</a>, <a href="star-fox-switch-2/">Star Fox</a>, <a href="splatoon-raiders-switch-2/">Splatoon Raiders</a></p>
+<p><b>Steam / Windows:</b> <a href="resonance-of-fate-4k-hd-edition-pc/">Resonance of Fate 4K/HD Edition</a>, <a href="inazuma-eleven-victory-road-pc/">Inazuma Eleven: Victory Road</a></p>
+</nav>
+<!-- /GAMES-INDEX -->
 </main>
 
 <footer class="wrap">
@@ -242,6 +261,7 @@ window.coverFail = function(img){
 
   function esc(s){return String(s == null ? "" : s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
   function fmtDate(d){var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(d||""); return m ? m[3]+"."+m[2]+"."+m[1] : ""}
+  function gslug(g){ return slug(g.title + " " + g.platform) }
   function slug(t){return String(t).toLowerCase().replace(/é/g,"e").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")}
   function link(g){
     var p = String(g.tg || "").trim();
@@ -355,7 +375,7 @@ window.coverFail = function(img){
     return '<article class="card" style="--pc:var(' + pl(g).col + ')">' + coverHTML(g, true) +
       '<div class="body">' +
         '<span class="plat">' + esc(g.platform) + '</span>' +
-        '<h3>' + esc(g.title) + '</h3>' +
+        '<h3><a href="' + gslug(g) + '/">' + esc(g.title) + '</a></h3>' +
         (meta.length ? '<div class="meta">' + meta.map(function(m){return "<span>" + m + "</span>"}).join("") + '</div>' : "") +
         progress(g) +
         (g.needs ? '<p class="needs"><b>Нужно:</b> ' + esc(g.needs) + '</p>' : "") +
