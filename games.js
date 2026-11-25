@@ -18,6 +18,10 @@ window.SITE = {
 // text (только для "soon"): "done" — текст уже готов, "wip" — текст ещё переводится
 // platform: "3DS", "Wii", "GameCube", "Switch", "Switch 2", "PC"
 window.GAMES = [
+  { title: "BLUE REFLECTION Quartet", platform: "Switch", status: "beta", version: "1.0", date: "2026-11-25", size: "956 МБ",
+    needs: "Американская версия 1.0.0 (0100DBD024EF6000), язык English. Переведены BLUE REFLECTION и RAY, у SUN и Second Light пока только меню",
+    coverUrl: "https://www.nintendo.com/eu/media/images/assets/nintendo_switch_games/bluereflectionquartet_1/1x1_BlueReflectionQuartet_image500w.jpg",
+    tg: "105", tag: "BRQ" },
   { title: "Atelier Ryza 3: Alchemist of the End & the Secret Key DX", platform: "Switch", status: "ready", version: "1.0", date: "2026-11-24", size: "94 МБ",
     needs: "Американская версия (0100A4C023B34000), обновление 1.1.0, язык игры English",
     coverUrl: "https://www.nintendo.com/eu/media/images/assets/nintendo_switch_games/atelierryza3alchemistoftheendandthesecretkeydx_1/1x1_AtelierRyza3AlchemistOfTheEndAndTheSecretKeyDX_image500w.jpg",
@@ -30,10 +34,10 @@ window.GAMES = [
     needs: "Язык игры English (0100199023B2E000)",
     coverUrl: "https://www.nintendo.com/eu/media/images/assets/nintendo_switch_games/atelierryzaeverdarknessandthesecrethideoutdx_1/1x1_AtelierRyzaEverDarknessAndTheSecretHideoutDX_image500w.jpg",
     tg: "95", tag: "AREDatSHDX" },
-  { title: "Xenoblade Chronicles X: Definitive Edition", platform: "Switch", status: "ready", version: "1.1", date: "2026-11-24", size: "97 МБ",
+  { title: "Xenoblade Chronicles X: Definitive Edition", platform: "Switch", status: "ready", version: "1.1.1", date: "2026-11-25", size: "97 МБ",
     needs: "Switch 1 (0100453019AA8000), обновление 2.0.0, язык English. Эмулятор или Atmosphere",
     coverUrl: "https://www.nintendo.com/eu/media/images/assets/nintendo_switch_games/xenobladechroniclesxdefinitiveedition/1x1_XenobladeChroniclesXDefinitiveEdition_image500w.jpg",
-    tg: "99", tag: "XCXDE" },
+    tg: "104", tag: "XCXDE" },
   { title: "Xenoblade Chronicles X: Definitive Edition", platform: "Switch 2", status: "ready", version: "1.1", date: "2026-11-19", size: "55 МБ",
     needs: "Switch 2 Edition (0400453019AA8001), версия 2.0.0, язык English",
     coverUrl: "https://www.nintendo.com/eu/media/images/assets/nintendo_switch_2_games/xenobladechroniclesxdefnitiveeditionns2e/1x1_NSwitch2_XenobladeChroniclesXDefinitiveEdition_image500w.jpg",
