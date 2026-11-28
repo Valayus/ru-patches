@@ -18,6 +18,10 @@ window.SITE = {
 // text (только для "soon"): "done" — текст уже готов, "wip" — текст ещё переводится
 // platform: "3DS", "Wii", "GameCube", "Switch", "Switch 2", "PC"
 window.GAMES = [
+  { title: "Fire Emblem: Radiant Dawn", platform: "Wii", status: "ready", version: "1.0", date: "2026-11-28", size: "51 МБ",
+    needs: "Европейская версия (RFEP01, Rev 1), свой образ, Windows. Dolphin или Wii через USB Loader GX / WiiFlow",
+    coverUrl: "https://art.gametdb.com/wii/coverfullHQ/EN/RFEP01.png", coverCrop: "right",
+    tg: "108", tag: "FERD" },
   { title: "BLUE REFLECTION Quartet", platform: "Switch", status: "beta", version: "1.3", date: "2026-11-28", size: "513 МБ",
     needs: "Американская версия 1.0.0 (0100DBD024EF6000), язык English. Переведены все 4 игры сборника",
     coverUrl: "https://www.nintendo.com/eu/media/images/assets/nintendo_switch_games/bluereflectionquartet_1/1x1_BlueReflectionQuartet_image500w.jpg",
@@ -115,10 +119,6 @@ window.GAMES = [
   { title: "Rodea the Sky Soldier", platform: "3DS", status: "soon", text: "done", version: "", date: "", size: "",
     needs: "Европейская версия (CTR-P-AR6P, 0004000000169500)",
     coverUrl: "https://art.gametdb.com/3ds/coverM/EN/AR6P.jpg",
-    tg: "" },
-  { title: "Fire Emblem: Radiant Dawn", platform: "Wii", status: "soon", text: "done", version: "", date: "", size: "",
-    needs: "Европейская версия (RFEP01, Rev 1)",
-    coverUrl: "https://art.gametdb.com/wii/coverfullHQ/EN/RFEP01.png", coverCrop: "right",
     tg: "" },
   { title: "Shin Megami Tensei: Devil Survivor 2 Record Breaker", platform: "3DS", status: "soon", text: "done", version: "", date: "", size: "",
     needs: "Европейская версия (CTR-P-ADXP, 000400000016E600)",
