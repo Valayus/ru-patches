@@ -18,10 +18,10 @@ window.SITE = {
 // text (только для "soon"): "done" — текст уже готов, "wip" — текст ещё переводится
 // platform: "3DS", "Wii", "GameCube", "Switch", "Switch 2", "PC"
 window.GAMES = [
-  { title: "BLUE REFLECTION Quartet", platform: "Switch", status: "beta", version: "1.0", date: "2026-11-25", size: "956 МБ",
-    needs: "Американская версия 1.0.0 (0100DBD024EF6000), язык English. Переведены BLUE REFLECTION и RAY, у SUN и Second Light пока только меню",
+  { title: "BLUE REFLECTION Quartet", platform: "Switch", status: "beta", version: "1.3", date: "2026-11-28", size: "513 МБ",
+    needs: "Американская версия 1.0.0 (0100DBD024EF6000), язык English. Переведены все 4 игры сборника",
     coverUrl: "https://www.nintendo.com/eu/media/images/assets/nintendo_switch_games/bluereflectionquartet_1/1x1_BlueReflectionQuartet_image500w.jpg",
-    tg: "105", tag: "BRQ" },
+    tg: "107", tag: "BRQ" },
   { title: "Atelier Ryza 3: Alchemist of the End & the Secret Key DX", platform: "Switch", status: "ready", version: "1.0", date: "2026-11-24", size: "94 МБ",
     needs: "Американская версия (0100A4C023B34000), обновление 1.1.0, язык игры English",
     coverUrl: "https://www.nintendo.com/eu/media/images/assets/nintendo_switch_games/atelierryza3alchemistoftheendandthesecretkeydx_1/1x1_AtelierRyza3AlchemistOfTheEndAndTheSecretKeyDX_image500w.jpg",
